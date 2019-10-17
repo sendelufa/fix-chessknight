@@ -2,6 +2,8 @@ package ru.sendel.service.chess;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import ru.sendel.exception.NotValidChessBoardSize;
 @Component
 public class KnightMovesParams {
 
+   private static final Logger LOGGER = LoggerFactory.getLogger(KnightMovesParams.class);
    private static final int ALPHABET_SIZE = 26;
    private static final int OFFSET_A_CODE = 96;
    private static int MAX_BOARD_SIZE;
@@ -44,6 +47,9 @@ public class KnightMovesParams {
       CellBoard start = convertToCell(startCell);
       CellBoard end = convertToCell(endCell);
 
+      LOGGER.info("start cell:{}", start);
+      LOGGER.info("end cell:{}", end);
+
       if (start.getColumn() > width || end.getColumn() > width || start.getRow() > height
           || end.getRow() > height) {
          throw new NotValidChessBoardSize();
@@ -56,10 +62,12 @@ public class KnightMovesParams {
    }
 
    private static CellBoard convertToCell(String cellName) {
-      Matcher cellMatcher = Pattern.compile(RegexCellName.REGEX_CELLNAME).matcher(cellName);
+      Matcher cellMatcher = Pattern.compile(RegexCellName.REGEX_CELLNAME, Pattern.CASE_INSENSITIVE)
+          .matcher(cellName);
       if (!cellMatcher.find()) {
          throw new NotValidChessBoardCellName();
       }
+
       int column = convertLettersToInt(cellMatcher.group(RegexCellName.COLUMN_GROUP));
       int row = Integer.parseInt(cellMatcher.group(RegexCellName.ROW_GROUP));
       return new CellBoard(column, row);
@@ -109,6 +117,6 @@ class RegexCellName {
 
    final static String COLUMN_GROUP = "column";
    final static String ROW_GROUP = "row";
-   final static String REGEX_CELLNAME = String.format("(?<%s>\\w+)(?<%s>\\d+)",
+   final static String REGEX_CELLNAME = String.format("(?<%s>[a-z]+)(?<%s>\\d+)",
        COLUMN_GROUP, ROW_GROUP);
 }

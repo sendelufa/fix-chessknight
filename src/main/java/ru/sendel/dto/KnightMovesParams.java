@@ -14,6 +14,12 @@ public class KnightMovesParams {
       this.end = end;
    }
 
+   public static KnightMovesParams getInstance(int width, int height, String start, String end){
+      if (!isValidChessboardSize(width, height)){}
+
+      return new KnightMovesParams(width, height, start, end);
+   }
+
    public int getWidth() {
       return width;
    }
@@ -44,5 +50,9 @@ public class KnightMovesParams {
 
    public void setEnd(String end) {
       this.end = end;
+   }
+
+   private static boolean isValidChessboardSize(int width, int height){
+      return width > 1;
    }
 }

@@ -1,6 +1,6 @@
 package ru.sendel.service;
 
-import ru.sendel.dto.KnightMovesParams;
+import ru.sendel.service.chess.KnightMovesParams;
 import ru.sendel.response.IBodyResponse;
 
 public interface IKnightService {

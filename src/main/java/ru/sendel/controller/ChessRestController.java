@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.sendel.dto.KnightMovesParams;
+import ru.sendel.service.chess.KnightMovesParams;
 import ru.sendel.response.IBodyResponse;
 import ru.sendel.service.IKnightService;
 
@@ -40,7 +40,7 @@ public class ChessRestController {
       LOGGER.info("request:width: {}, width: {}, width: {}, width: {}",
           width, height, startCell, endCell);
 
-      IBodyResponse response = knightChessService.calculateKnightsMoves(new KnightMovesParams(width,
+      IBodyResponse response = knightChessService.calculateKnightsMoves(KnightMovesParams.getInstance(width,
           height, startCell, endCell));
 
       return new ResponseEntity<>(response.getBody(),

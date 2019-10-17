@@ -1,7 +1,5 @@
 package ru.sendel.service.chess;
 
-import ru.sendel.dto.KnightMovesParams;
-
 public class ChessBoard {
 
    private int[][] chessBoard;

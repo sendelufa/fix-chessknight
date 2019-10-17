@@ -40,7 +40,8 @@ public class ChessRestController {
       LOGGER.info("request:width: {}, width: {}, width: {}, width: {}",
           width, height, startCell, endCell);
 
-      IBodyResponse response = knightChessService.calculateKnightsMoves(KnightMovesParams.getInstance(width,
+      IBodyResponse response =
+          knightChessService.calculateKnightsMoves(KnightMovesParams.getInstance(width,
           height, startCell, endCell));
 
       return new ResponseEntity<>(response.getBody(),

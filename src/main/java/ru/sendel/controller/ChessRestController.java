@@ -1,20 +1,25 @@
 package ru.sendel.controller;
 
 
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.sendel.dto.KnightMovesParams;
+import ru.sendel.response.IBodyResponse;
+import ru.sendel.service.IKnightService;
 
 @RestController
 @RequestMapping("rest/")
 public class ChessRestController {
+
+   @Autowired
+   private IKnightService knightChessService;
 
    private static final Logger LOGGER = LoggerFactory.getLogger(ChessRestController.class);
 
@@ -28,14 +33,17 @@ public class ChessRestController {
     */
    @GetMapping("count")
    public ResponseEntity registration(
-       @RequestParam(value = "width") Integer width,
-       @RequestParam(value = "height") Integer height,
+       @RequestParam(value = "width") int width,
+       @RequestParam(value = "height") int height,
        @RequestParam(value = "start") String startCell,
        @RequestParam(value = "end") String endCell) {
       LOGGER.info("request:width: {}, width: {}, width: {}, width: {}",
           width, height, startCell, endCell);
-      return new ResponseEntity<>(String.format("width: %s, width: %s, width: %s, width: %s",
-          width, height, startCell, endCell),
+
+      IBodyResponse response = knightChessService.calculateKnightsMoves(new KnightMovesParams(width,
+          height, startCell, endCell));
+
+      return new ResponseEntity<>(response.getBody(),
           HttpStatus.OK);
    }
 }

@@ -13,6 +13,8 @@
 ## Build & Deploy WAR for Tomcat with maven
 mvn clean package
 
+to deploy it, dropping it into the $CATALINA_HOME\webapps directory of Tomcat instance
+
 ## API
 
  - **GET {endpoint}/hourse/rest/count**

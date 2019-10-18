@@ -9,8 +9,23 @@
 - Spring Boot
 - Junit
 
-## Build WAR for Tomcat with maven
+
+## Build & Deploy WAR for Tomcat with maven
 mvn clean package
+
+## API
+
+ - **GET {endpoint}/hourse/rest/count**
+
+Get minimum number of chess knight moves
+
+@param width - width of field
+
+@param height - height of field
+
+@param startCell - cell where knight is start moves
+
+@param endCell - cell where knight wants to move
 
 
 ## Test Deploy

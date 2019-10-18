@@ -4,20 +4,15 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.sendel.exception.NotValidChessBoardCellName;
 import ru.sendel.exception.NotValidChessBoardSize;
-import ru.sendel.service.KnightChessService;
 import ru.sendel.service.chess.KnightMovesParams;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class KnightMovesParamsTest {
-
-   @Autowired
-   private KnightChessService knightChessService;
 
    @Test(expected = NotValidChessBoardSize.class)
    public void test_set_params_all_valid() {
@@ -48,5 +43,10 @@ public class KnightMovesParamsTest {
    @Test(expected = NotValidChessBoardCellName.class)
    public void test_set_params_not_valid_end() {
       KnightMovesParams.getInstance(1000, 200, "S2", "AF");
+   }
+
+   @Test(expected = NotValidChessBoardSize.class)
+   public void test_set_params_start_external_board       () {
+      KnightMovesParams.getInstance(1, 200, "S1", "S1");
    }
 }

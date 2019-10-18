@@ -66,5 +66,14 @@ public class ControllerTest {
           .andExpect(content().string(containsString("1")));
    }
 
+   @Test
+   public void test_Response_BadRequest_wo_end() throws Exception {
+      mvc.perform(get(PATH_KNIGHT_MOVES_CALC)
+          .param(widthName, "10")
+          .param(heightName, "14")
+          .param(startName, "B1"))
+          .andDo(print())
+          .andExpect(status().isBadRequest());
+   }
 
 }

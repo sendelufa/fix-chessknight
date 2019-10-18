@@ -42,10 +42,6 @@ public class ChessKnight {
 
          walkedCells.addAll(currentMoves);
 
-         for (CellBoard cellBoard : currentMoves) {
-            LOGGER.info("{} - {}", moves, cellBoard);
-         }
-
          if (currentMoves.size() == 0) {
             break;
          }

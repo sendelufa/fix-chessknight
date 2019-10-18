@@ -22,18 +22,21 @@ public class ChessKnight {
 
    public int getMinMoves() {
       int moves = 0;
+      if (params.getStart().equals(params.getEnd())) {
+         return 0;
+      }
       Set<CellBoard> walkedCells = new HashSet<>();
       walkedCells.add(params.getStart());
       List<CellBoard> nextMoves = new ArrayList<>(walkedCells);
       Set<CellBoard> currentMoves;
       while (!nextMoves.contains(params.getEnd())) {
-         moves++;
+
          currentMoves = nextMoves.stream().map(this::getNextNotRepeatedKnightsTurns)
              .flatMap(Collection::stream)
              .filter(c -> c.getRow() > 0)
              .filter(c -> c.getColumn() > 0)
-             .filter(c -> c.getRow() < params.getWidth())
-             .filter(c -> c.getColumn() < params.getHeight())
+             .filter(c -> c.getRow() < params.getHeight())
+             .filter(c -> c.getColumn() < params.getWidth())
              .filter(c -> !walkedCells.contains(c))
              .collect(Collectors.toSet());
 
@@ -46,8 +49,8 @@ public class ChessKnight {
          if (currentMoves.size() == 0) {
             break;
          }
-
-         if (currentMoves.contains(params.getEnd())){
+         moves++;
+         if (currentMoves.contains(params.getEnd())) {
             return moves;
          }
 

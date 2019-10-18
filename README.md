@@ -30,3 +30,11 @@ Get minimum number of chess knight moves
 
 ## Test Deploy
 http://93.186.255.195:8080/fix-knight-moves-1.0-SNAPSHOT/hourse/rest/count?width=10&height=14&start=B1&end=A1
+
+## Algorithms
+Breadth-first search without optimization and limit.
+Can be improved with add limits to "wave propagation" and not consider cells upp and down rectangle where start and end are located.
+And add limits that control "center line" in big rectangles where start and end are in diagonals.
+
+
+

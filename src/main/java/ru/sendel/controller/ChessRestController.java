@@ -15,7 +15,7 @@ import ru.sendel.response.IBodyResponse;
 import ru.sendel.service.IKnightService;
 
 @RestController
-@RequestMapping("rest/")
+@RequestMapping("hourse/rest/")
 public class ChessRestController {
 
    @Autowired
@@ -45,6 +45,12 @@ public class ChessRestController {
           height, startCell, endCell));
 
       return new ResponseEntity<>(response.getBody(),
+          HttpStatus.OK);
+   }
+
+   @GetMapping("/")
+   public ResponseEntity registration(){
+      return new ResponseEntity<>("test",
           HttpStatus.OK);
    }
 }

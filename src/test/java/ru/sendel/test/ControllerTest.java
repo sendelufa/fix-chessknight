@@ -16,15 +16,15 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import ru.sendel.controller.ChessRestController;
+import ru.sendel.controller.rest.ChessRestController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class ControllerTest {
 
-   private final String PATH_TEST_GET = "/hourse/rest/";
-   private final String PATH_KNIGHT_MOVES_CALC = "/hourse/rest/count";
+   private final String PATH_TEST_GET = "/rest/";
+   private final String PATH_KNIGHT_MOVES_CALC = "/rest/count";
    @Autowired
    private ChessRestController controller;
    @Autowired

@@ -1,4 +1,4 @@
-package ru.sendel.controller;
+package ru.sendel.controller.rest;
 
 
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import ru.sendel.response.IBodyResponse;
 import ru.sendel.service.IKnightService;
 
 @RestController
-@RequestMapping("hourse/rest/")
+@RequestMapping("/rest/")
 public class ChessRestController {
 
    @Autowired

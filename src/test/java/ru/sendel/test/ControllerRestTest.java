@@ -16,17 +16,14 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import ru.sendel.controller.ChessRestController;
+import ru.sendel.controller.rest.ChessRestController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ControllerTest {
+public class ControllerRestTest {
 
-   private final String PATH_TEST_GET = "/hourse/rest/";
-   private final String PATH_KNIGHT_MOVES_CALC = "/hourse/rest/count";
-   @Autowired
-   private ChessRestController controller;
+   private final String PATH_KNIGHT_MOVES_CALC = "/rest/count";
    @Autowired
    private MockMvc mvc;
 
@@ -39,13 +36,7 @@ public class ControllerTest {
    @Value("${knightmoves.request.param.end}")
    private String endName;
 
-   @Test
-   public void testResponseFormat() throws Exception {
-      mvc.perform(get(PATH_TEST_GET))
-          .andDo(print())
-          .andExpect(status().isOk())
-          .andExpect(content().string(containsString("test")));
-   }
+
 
    @Test
    public void test_Response_BadRequest_wo_params() throws Exception {

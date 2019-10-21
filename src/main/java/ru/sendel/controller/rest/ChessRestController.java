@@ -1,4 +1,4 @@
-package ru.sendel.controller;
+package ru.sendel.controller.rest;
 
 
 import org.slf4j.Logger;
@@ -15,13 +15,12 @@ import ru.sendel.response.IBodyResponse;
 import ru.sendel.service.IKnightService;
 
 @RestController
-@RequestMapping("hourse/rest/")
+@RequestMapping("/rest/")
 public class ChessRestController {
 
+   private static final Logger LOGGER = LoggerFactory.getLogger(ChessRestController.class);
    @Autowired
    private IKnightService knightChessService;
-
-   private static final Logger LOGGER = LoggerFactory.getLogger(ChessRestController.class);
 
    /**
     * Get minimum number of chess knight moves
@@ -42,15 +41,9 @@ public class ChessRestController {
 
       IBodyResponse response =
           knightChessService.calculateKnightsMoves(KnightMovesParams.getInstance(width,
-          height, startCell, endCell));
+              height, startCell, endCell));
 
       return new ResponseEntity<>(response.getBody(),
-          HttpStatus.OK);
-   }
-
-   @GetMapping("/")
-   public ResponseEntity registration(){
-      return new ResponseEntity<>("test",
           HttpStatus.OK);
    }
 }

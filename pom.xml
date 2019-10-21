@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Fix Hourse Moves</name>
+  <name>fix-hourse-moves</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,6 +54,7 @@
   </dependencies>
 
   <build>
+    <finalName>hourse</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>

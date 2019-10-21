@@ -40,7 +40,7 @@ public class KnightMovesParams {
    public static KnightMovesParams getInstance(
        int width, int height, String startCell, String endCell) {
 
-      if (!isValidChessboardSize(width, height)) {
+      if (!isValidChessboardSize(width, height) || startCell == null || endCell == null) {
          throw new NotValidChessBoardSize();
       }
 

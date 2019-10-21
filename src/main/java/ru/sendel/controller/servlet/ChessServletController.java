@@ -6,9 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import ru.sendel.exception.NotValidChessBoardSize;
 import ru.sendel.response.IBodyResponse;
@@ -31,7 +28,7 @@ public class ChessServletController extends HttpServlet {
    private int heightChessBoard;
 
    @Override
-   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+   public void doGet(HttpServletRequest req, HttpServletResponse resp)
        throws ServletException, IOException {
       resp.setContentType("text/plain");
       try (PrintWriter out = resp.getWriter()) {

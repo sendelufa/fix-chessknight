@@ -13,7 +13,11 @@
 ## Build & Deploy WAR for Tomcat with maven
 mvn clean package
 
-to deploy it, dropping it into the $CATALINA_HOME\webapps directory of Tomcat instance
+to deploy it, dropping "target/hourse.war" into the $CATALINA_HOME\webapps directory of Tomcat
+instance
+
+## Run local with maven
+mvn clean package spring-boot:run
 
 ## API
 
